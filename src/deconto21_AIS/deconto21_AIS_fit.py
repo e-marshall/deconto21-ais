@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-''' dp_fit_icesheet.py
+""" dp_fit_icesheet.py
 
 Fitting process for the dp21 icesheet module.
 
@@ -11,26 +11,29 @@ samples.  This is essentially a NULL process.
 Note: 'pipeline_id' is a unique identifier that distinguishes it among other instances
 of this module within the same workflow.
 
-'''
+"""
+
 
 def dp21_fit_icesheet(pipeline_id):
+    return None
 
-	return(None)
 
+if __name__ == "__main__":
+    # Initialize the command-line argument parser
+    parser = argparse.ArgumentParser(
+        description="Run the DP21 icesheet fitting stage.",
+        epilog="Note: This is meant to be run as part of the Framework for the Assessment of Changes To Sea-level (FACTS)",
+    )
 
-if __name__ == '__main__':
+    # Define the command line arguments to be expected
+    parser.add_argument(
+        "--pipeline_id", help="Unique identifier for this instance of the module"
+    )
 
-	# Initialize the command-line argument parser
-	parser = argparse.ArgumentParser(description="Run the DP21 icesheet fitting stage.",\
-	epilog="Note: This is meant to be run as part of the Framework for the Assessment of Changes To Sea-level (FACTS)")
+    # Parse the arguments
+    args = parser.parse_args()
 
-	# Define the command line arguments to be expected
-	parser.add_argument('--pipeline_id', help="Unique identifier for this instance of the module")
+    # Run the preprocessing stage with the provided arguments
+    dp21_fit_icesheet(args.pipeline_id)
 
-	# Parse the arguments
-	args = parser.parse_args()
-
-	# Run the preprocessing stage with the provided arguments
-	dp21_fit_icesheet(args.pipeline_id)
-
-	sys.exit()
+    sys.exit()
