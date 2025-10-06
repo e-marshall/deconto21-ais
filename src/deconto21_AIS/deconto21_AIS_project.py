@@ -98,9 +98,9 @@ def dp21_project_icesheet(
     replace,
     rngseed,
     preprocess_dict,
-    output_AIS_gslr_file,
-    output_EAIS_gslr_file,
-    output_WAIS_gslr_file,
+    output_ais_gslr_file,
+    output_eais_gslr_file,
+    output_wais_gslr_file,
 ):
     years = preprocess_dict["years"]
     wais = preprocess_dict["wais_samps"]
@@ -145,7 +145,7 @@ def dp21_project_icesheet(
     samples = np.arange(nsamps, dtype=np.int64)
     locations = np.array([-1], dtype=np.int64)  # single “location”, value -1
 
-    if output_EAIS_gslr_file is not None:
+    if output_eais_gslr_file is not None:
         ds_eais = make_projection_ds(
             ice_source="EAIS",
             global_samps=eais_samps,
@@ -155,9 +155,9 @@ def dp21_project_icesheet(
             scenario=scenario,
             baseyear=baseyear,
         )
-        ds_eais.to_netcdf(output_EAIS_gslr_file)
+        ds_eais.to_netcdf(output_eais_gslr_file)
 
-    if output_WAIS_gslr_file is not None:
+    if output_wais_gslr_file is not None:
         ds_wais = make_projection_ds(
             ice_source="WAIS",
             global_samps=wais_samps,
@@ -167,8 +167,8 @@ def dp21_project_icesheet(
             scenario=scenario,
             baseyear=baseyear,
         )
-        ds_wais.to_netcdf(output_WAIS_gslr_file)
-    if output_AIS_gslr_file is not None:
+        ds_wais.to_netcdf(output_wais_gslr_file)
+    if output_ais_gslr_file is not None:
         ds_ais = make_projection_ds(
             ice_source="AIS",
             global_samps=ais_samps,
@@ -178,7 +178,7 @@ def dp21_project_icesheet(
             scenario=scenario,
             baseyear=baseyear,
         )
-        ds_ais.to_netcdf(output_AIS_gslr_file)
+        ds_ais.to_netcdf(output_ais_gslr_file)
 
     return output
 
@@ -192,9 +192,9 @@ def dp21_project_icesheet_temperaturedriven(
     replace,
     rngseed,
     preprocess_dict,
-    output_AIS_gslr_file,
-    output_EAIS_gslr_file,
-    output_WAIS_gslr_file,
+    output_ais_gslr_file,
+    output_eais_gslr_file,
+    output_wais_gslr_file,
 ):
     # Load the data file
     years = preprocess_dict["years"]
@@ -253,7 +253,7 @@ def dp21_project_icesheet_temperaturedriven(
     samples = np.arange(nsamps, dtype=np.int64)
     locations = np.array([-1], dtype=np.int64)  # single “location”, value -1
 
-    if output_EAIS_gslr_file is not None:
+    if output_eais_gslr_file is not None:
         ds_eais = make_projection_ds(
             ice_source="EAIS",
             global_samps=eais_samps,
@@ -263,9 +263,9 @@ def dp21_project_icesheet_temperaturedriven(
             scenario=scenario,
             baseyear=baseyear,
         )
-        ds_eais.to_netcdf(output_EAIS_gslr_file)
+        ds_eais.to_netcdf(output_eais_gslr_file)
 
-    if output_WAIS_gslr_file is not None:
+    if output_wais_gslr_file is not None:
         ds_wais = make_projection_ds(
             ice_source="WAIS",
             global_samps=wais_samps,
@@ -275,8 +275,8 @@ def dp21_project_icesheet_temperaturedriven(
             scenario=scenario,
             baseyear=baseyear,
         )
-        ds_wais.to_netcdf(output_WAIS_gslr_file)
-    if output_AIS_gslr_file is not None:
+        ds_wais.to_netcdf(output_wais_gslr_file)
+    if output_ais_gslr_file is not None:
         ds_ais = make_projection_ds(
             ice_source="AIS",
             global_samps=ais_samps,
@@ -286,7 +286,7 @@ def dp21_project_icesheet_temperaturedriven(
             scenario=scenario,
             baseyear=baseyear,
         )
-        ds_ais.to_netcdf(output_AIS_gslr_file)
+        ds_ais.to_netcdf(output_ais_gslr_file)
 
     return output
 

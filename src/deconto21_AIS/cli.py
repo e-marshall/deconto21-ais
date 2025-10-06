@@ -1,9 +1,9 @@
-from deconto21_AIS.deconto21_AIS_preprocess import dp21_preprocess_icesheet
-from deconto21_AIS.deconto21_AIS_project import (
+from deconto21_ais.deconto21_ais_preprocess import dp21_preprocess_icesheet
+from deconto21_ais.deconto21_ais_project import (
     dp21_project_icesheet,
     dp21_project_icesheet_temperaturedriven,
 )
-from deconto21_AIS.deconto21_AIS_postprocess import dp21_postprocess_icesheet
+from deconto21_ais.deconto21_ais_postprocess import dp21_postprocess_icesheet
 
 import click
 
@@ -11,7 +11,7 @@ import click
 @click.command()
 @click.option(
     "--scenario",
-    type=click.Choice(["rcp26", "rcp45", "rcp85"]),
+    type=str, #click.Choice(["rcp26", "rcp45", "rcp85"]),
     help="Emission scenario for ice sheet projections",
     envvar="DP21_SCENARIO",
 )
@@ -28,10 +28,46 @@ import click
     envvar="DP21_CLIMATE_DATA_FILE",
 )
 @click.option(
-    "--input-data-dir",
+    "--input-eais-rcp26-file",
     type=str,
-    help="Directory containing input data files",
-    envvar="DP21_INPUT_DATA_DIR",
+    help="Input EAIS RCP2.6 data file",
+    envvar="DP21_INPUT_EAIS_RCP26_FILE",
+    required=True
+)
+@click.option(
+    "--input-eais-rcp45-file",
+    type=str,
+    help="Input EAIS RCP4.5 data file",
+    envvar="DP21_INPUT_EAIS_RCP45_FILE",
+    required=True
+)
+@click.option(
+    "--input-eais-rcp85-file",
+    type=str,
+    help="Input EAIS RCP8.5 data file",
+    envvar="DP21_INPUT_EAIS_RCP85_FILE",
+    required=True
+)
+@click.option(
+    "--input-wais-rcp26-file",
+    type=str,
+    help="Input WAIS RCP2.6 data file",
+    envvar="DP21_INPUT_WAIS_RCP26_FILE",
+    required=True
+)
+@click.option(
+    "--input-wais-rcp45-file",
+    type=str,
+    help="Input WAIS RCP4.5 data file",
+    envvar="DP21_INPUT_WAIS_RCP45_FILE",
+    required=True
+)
+@click.option(
+    "--input-wais-rcp85-file",
+    type=str,
+    help="Input WAIS RCP8.5 data file",
+    envvar="DP21_INPUT_WAIS_RCP85_FILE",
+    required=True
 )
 @click.option(
     "--nsamps",
@@ -135,7 +171,12 @@ def main(
     scenario,
     baseyear,
     climate_data_file,
-    input_data_dir,
+    input_eais_rcp26_file,
+    input_eais_rcp45_file,
+    input_eais_rcp85_file,
+    input_wais_rcp26_file,
+    input_wais_rcp45_file,
+    input_wais_rcp85_file,
     nsamps,
     pyear_start,
     pyear_end,
@@ -154,12 +195,25 @@ def main(
     output_wais_lslr,
 ):
     """Run the DP21 ice sheet workflow."""
-
+    input_data_dict = {
+        'rcp26': {
+            'eais': input_eais_rcp26_file,
+            'wais': input_wais_rcp26_file
+        },
+        'rcp45': {
+            'eais': input_eais_rcp45_file,
+            'wais': input_wais_rcp45_file
+        },
+        'rcp85': {
+            'eais': input_eais_rcp85_file,
+            'wais': input_wais_rcp85_file
+        }
+    }
     # Run the preprocessing stage
     dp21_preprocessed_data = dp21_preprocess_icesheet(
         scenario=scenario,
         baseyear=baseyear,
-        input_data_dir=input_data_dir,
+        input_paths_dict = input_data_dict,
         pipeline_id=pipeline_id,
         climate_data_file=climate_data_file,
     )
@@ -175,9 +229,9 @@ def main(
             replace=replace,
             rngseed=rngseed,
             preprocess_dict=dp21_preprocessed_data,
-            output_AIS_gslr_file=output_ais_gslr,
-            output_EAIS_gslr_file=output_eais_gslr,
-            output_WAIS_gslr_file=output_wais_gslr,
+            output_ais_gslr_file=output_ais_gslr,
+            output_eais_gslr_file=output_eais_gslr,
+            output_wais_gslr_file=output_wais_gslr,
         )
     # if climate_data_file is None:
     else:
@@ -190,9 +244,9 @@ def main(
             rngseed=rngseed,
             pipeline_id=pipeline_id,
             preprocess_dict=dp21_preprocessed_data,
-            output_AIS_gslr_file=output_ais_gslr,
-            output_EAIS_gslr_file=output_eais_gslr,
-            output_WAIS_gslr_file=output_wais_gslr,
+            output_ais_gslr_file=output_ais_gslr,
+            output_eais_gslr_file=output_eais_gslr,
+            output_wais_gslr_file=output_wais_gslr,
         )
 
     # Run the post-processing stage

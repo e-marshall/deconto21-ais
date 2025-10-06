@@ -2,8 +2,8 @@ import numpy as np
 import os
 import time
 import argparse
-from deconto21_AIS.read_locationfile import ReadLocationFile
-from deconto21_AIS.AssignFP import AssignFP
+from deconto21_ais.read_locationfile import ReadLocationFile
+from deconto21_ais.AssignFP import AssignFP
 
 import xarray as xr
 import dask.array as da

@@ -1,5 +1,5 @@
 import numpy as np
-from deconto21_AIS.ReadFingerprint import ReadFingerprint as readfp
+from deconto21_ais.ReadFingerprint import ReadFingerprint as readfp
 from scipy import interpolate as interp
 
 """ AssignFP.py

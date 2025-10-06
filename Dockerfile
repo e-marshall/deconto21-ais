@@ -2,7 +2,7 @@ FROM python:3.12-slim-bookworm
 COPY --from=ghcr.io/astral-sh/uv:0.7.11 /uv /uvx /bin/
 
 # Where we're installing this thing.
-ARG APP_HOME="/opt/bamber19-icesheets"
+ARG APP_HOME="/opt/deconto21-ais"
 
 # Use custom user/group so container not run with root permissions.
 USER 9876:9876

@@ -1,5 +1,5 @@
 [project]
-name = "deconto21-AIS"
+name = "deconto21-ais"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-deconto21-AIS = "deconto21_AIS.cli:main"
+deconto21-ais = "deconto21_ais.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.8.11,<0.9.0"]
