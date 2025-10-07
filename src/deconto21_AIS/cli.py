@@ -11,7 +11,7 @@ import click
 @click.command()
 @click.option(
     "--scenario",
-    type=str, 
+    type=str,
     help="Emission scenario for ice sheet projections",
     envvar="DP21_SCENARIO",
     default="rcp85",
@@ -21,7 +21,7 @@ import click
     type=int,
     help="Base year for ice sheet projections",
     envvar="DP21_BASEYEAR",
-    default=2000
+    default=2000,
 )
 @click.option(
     "--climate-data-file",
@@ -34,56 +34,56 @@ import click
     type=str,
     help="Input EAIS RCP2.6 data file",
     envvar="DP21_INPUT_EAIS_RCP26_FILE",
-    required=True
+    required=True,
 )
 @click.option(
     "--input-eais-rcp45-file",
     type=str,
     help="Input EAIS RCP4.5 data file",
     envvar="DP21_INPUT_EAIS_RCP45_FILE",
-    required=True
+    required=True,
 )
 @click.option(
     "--input-eais-rcp85-file",
     type=str,
     help="Input EAIS RCP8.5 data file",
     envvar="DP21_INPUT_EAIS_RCP85_FILE",
-    required=True
+    required=True,
 )
 @click.option(
     "--input-wais-rcp26-file",
     type=str,
     help="Input WAIS RCP2.6 data file",
     envvar="DP21_INPUT_WAIS_RCP26_FILE",
-    required=True
+    required=True,
 )
 @click.option(
     "--input-wais-rcp45-file",
     type=str,
     help="Input WAIS RCP4.5 data file",
     envvar="DP21_INPUT_WAIS_RCP45_FILE",
-    required=True
+    required=True,
 )
 @click.option(
     "--input-wais-rcp85-file",
     type=str,
     help="Input WAIS RCP8.5 data file",
     envvar="DP21_INPUT_WAIS_RCP85_FILE",
-    required=True
+    required=True,
 )
 @click.option(
     "--nsamps",
     type=int,
     help="Number of samples to draw from the ice sheet model ensemble",
     envvar="DP21_NSAMPS",
-    default=500
+    default=500,
 )
 @click.option(
     "--pyear-start",
     type=int,
     help="Start year for ice sheet projections",
     envvar="DP21_PYEAR_START",
-    default=2020
+    default=2020,
 )
 @click.option(
     "--pyear-end",
@@ -203,24 +203,15 @@ def main(
 ):
     """Run the DP21 ice sheet workflow."""
     input_data_dict = {
-        'rcp26': {
-            'eais': input_eais_rcp26_file,
-            'wais': input_wais_rcp26_file
-        },
-        'rcp45': {
-            'eais': input_eais_rcp45_file,
-            'wais': input_wais_rcp45_file
-        },
-        'rcp85': {
-            'eais': input_eais_rcp85_file,
-            'wais': input_wais_rcp85_file
-        }
+        "rcp26": {"eais": input_eais_rcp26_file, "wais": input_wais_rcp26_file},
+        "rcp45": {"eais": input_eais_rcp45_file, "wais": input_wais_rcp45_file},
+        "rcp85": {"eais": input_eais_rcp85_file, "wais": input_wais_rcp85_file},
     }
     # Run the preprocessing stage
     dp21_preprocessed_data = dp21_preprocess_icesheet(
         scenario=scenario,
         baseyear=baseyear,
-        input_paths_dict = input_data_dict,
+        input_paths_dict=input_data_dict,
         pipeline_id=pipeline_id,
         climate_data_file=climate_data_file,
     )

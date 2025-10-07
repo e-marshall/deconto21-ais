@@ -16,24 +16,20 @@ of this module within the same workflow.
 
 
 def dp21_preprocess_icesheet(
-    scenario, 
-    baseyear, 
-    pipeline_id, 
-    climate_data_file, 
-    input_paths_dict
+    scenario, baseyear, pipeline_id, climate_data_file, input_paths_dict
 ):
     # If a climate data file is passed
     if climate_data_file is not None:
         scens = ["rcp26", "rcp45", "rcp85"]
-        years, eais_samps, wais_samps = ReadScenarioFile(scenario = scens[0],
-                                                        baseyear = baseyear,
-                                                        paths_dict = input_paths_dict)
+        years, eais_samps, wais_samps = ReadScenarioFile(
+            scenario=scens[0], baseyear=baseyear, paths_dict=input_paths_dict
+        )
         eais_samps = eais_samps[:, :, np.newaxis]
         wais_samps = wais_samps[:, :, np.newaxis]
         for ii in range(1, len(scens)):
-            years, e, w = ReadScenarioFile(scenario = scens[ii], 
-                                           baseyear = baseyear, 
-                                           paths_dict = input_paths_dict)
+            years, e, w = ReadScenarioFile(
+                scenario=scens[ii], baseyear=baseyear, paths_dict=input_paths_dict
+            )
             eais_samps = np.append(eais_samps, e[:, :, np.newaxis], axis=2)
             wais_samps = np.append(wais_samps, w[:, :, np.newaxis], axis=2)
     else:
@@ -63,9 +59,9 @@ def ReadScenarioFile(scenario, baseyear, paths_dict):
     }
     mapped_scenario = scen_dict[scenario]
 
-    eais_filepath = paths_dict[mapped_scenario]['eais']
-    wais_filepath = paths_dict[mapped_scenario]['wais']
-    
+    eais_filepath = paths_dict[mapped_scenario]["eais"]
+    wais_filepath = paths_dict[mapped_scenario]["wais"]
+
     # Get the years
     years = LoadNetCDF(eais_filepath, "years")
 

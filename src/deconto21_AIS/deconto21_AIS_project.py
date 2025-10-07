@@ -304,7 +304,7 @@ def GetSATData(
 
     # Extract the surface temperature for this scenario
     if scenario not in df_ssp.keys():
-        raise Exception("Scenario {} not found in {}".format(scenario, fname))
+        raise ValueError("Scenario {} not found in {}".format(scenario, fname))
     ssp_folder = df_ssp.get(scenario)
     sat_ssp = ssp_folder.get("surface_temperature")
 
@@ -335,7 +335,7 @@ def GetSATData(
 def pickScenario(climate_data_file, scenario, rng):
     # Load the temperature data
 
-    SAT, Time, NumTensemble = GetSATData(climate_data_file, scenario)
+    SAT, Time, _ = GetSATData(climate_data_file, scenario)
 
     # find integrated SAT over 2000-2099
     x2 = np.where((Time[:] < 2100) * (Time[:] >= 2000))

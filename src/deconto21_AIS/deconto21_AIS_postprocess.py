@@ -48,7 +48,6 @@ def dp21_postprocess_icesheet(
     nsamps = eaissamps.shape[0]
 
     # Get the fingerprints for all sites from all ice sheets
-    # fpdir = os.path.join(os.path.dirname(__file__), "FPRINT")
     waisfp = da.from_array(
         AssignFP(os.path.join(fpdir, "fprint_wais.nc"), site_lats, site_lons),
         chunks=chunksize,
