@@ -11,15 +11,17 @@ import click
 @click.command()
 @click.option(
     "--scenario",
-    type=str, #click.Choice(["rcp26", "rcp45", "rcp85"]),
+    type=str, 
     help="Emission scenario for ice sheet projections",
     envvar="DP21_SCENARIO",
+    default="rcp85",
 )
 @click.option(
     "--baseyear",
     type=int,
     help="Base year for ice sheet projections",
     envvar="DP21_BASEYEAR",
+    default=2000
 )
 @click.option(
     "--climate-data-file",
@@ -74,30 +76,35 @@ import click
     type=int,
     help="Number of samples to draw from the ice sheet model ensemble",
     envvar="DP21_NSAMPS",
+    default=500
 )
 @click.option(
     "--pyear-start",
     type=int,
     help="Start year for ice sheet projections",
     envvar="DP21_PYEAR_START",
+    default=2020
 )
 @click.option(
     "--pyear-end",
     type=int,
     help="End year for ice sheet projections",
     envvar="DP21_PYEAR_END",
+    default=2100,
 )
 @click.option(
     "--pyear-step",
     type=int,
     help="Year step for ice sheet projections",
     envvar="DP21_PYEAR_STEP",
+    default=10,
 )
 @click.option(
     "--replace",
     type=bool,
     help="Whether to sample with replacement from the ice sheet model ensemble",
     envvar="DP21_REPLACE",
+    default=True,
 )
 @click.option(
     "--rngseed",

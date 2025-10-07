@@ -21,7 +21,6 @@ fp_sites = Vector of fingerprint coefficients for the sites of interest
 
 def AssignFP(fp_filename, qlats, qlons):
     ## Read in the fitted parameters from parfile
-    # Open the file
     try:
         (fp, fp_lats, fp_lons) = readfp(fp_filename)
     except Exception as e:
