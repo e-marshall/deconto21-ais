@@ -211,6 +211,7 @@ def main(
     output_eais_lslr,
     output_wais_lslr,
 ):
+    click.echo("Hello from deconto21-ais!")
     """Run the DP21 ice sheet workflow."""
     input_data_dict = {
         "rcp26": {"eais": input_eais_rcp26_file, "wais": input_wais_rcp26_file},
