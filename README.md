@@ -110,7 +110,7 @@ docker run --rm deconto21-ais --help
 ```
 
 ## Building the container locally
-You can build the container with Docker by cloning the repository locally and then running the following command from the repository root:
+You can build the container with Docker by running the following command from the repository root:
 
 ```shell
 docker build -t deconto21-ais . 
