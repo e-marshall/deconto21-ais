@@ -13,6 +13,8 @@ Clone the repository and create directories to hold input and output data.
 ```shell
 mkdir -p ./data/input
 curl -sL https://zenodo.org/record/7478192/files/deconto21_AIS_preprocess_data.tgz | tar -zx -C ./data/input
+# Fingerprint input data for postprocessing step
+curl -sL https://zenodo.org/record/7478192/files/grd_fingerprints_data.tgz | tar -zx -C ./data/input
 
 #Make directory for inputs
 mkdir -p ./data/output
