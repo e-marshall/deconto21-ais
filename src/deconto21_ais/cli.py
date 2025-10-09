@@ -15,6 +15,7 @@ import click
     help="Emission scenario for ice sheet projections",
     envvar="DP21_SCENARIO",
     default="rcp85",
+    show_default=True,
 )
 @click.option(
     "--baseyear",
@@ -22,6 +23,7 @@ import click
     help="Base year for ice sheet projections",
     envvar="DP21_BASEYEAR",
     default=2000,
+    show_default=True,
 )
 @click.option(
     "--climate-data-file",
@@ -76,7 +78,7 @@ import click
     type=int,
     help="Number of samples to draw from the ice sheet model ensemble",
     envvar="DP21_NSAMPS",
-    default=500,
+    required=True,
 )
 @click.option(
     "--pyear-start",
@@ -84,6 +86,7 @@ import click
     help="Start year for ice sheet projections",
     envvar="DP21_PYEAR_START",
     default=2020,
+    show_default=True,
 )
 @click.option(
     "--pyear-end",
@@ -91,6 +94,7 @@ import click
     help="End year for ice sheet projections",
     envvar="DP21_PYEAR_END",
     default=2100,
+    show_default=True,
 )
 @click.option(
     "--pyear-step",
@@ -98,6 +102,7 @@ import click
     help="Year step for ice sheet projections",
     envvar="DP21_PYEAR_STEP",
     default=10,
+    show_default=True,
 )
 @click.option(
     "--replace",
@@ -105,6 +110,7 @@ import click
     help="Whether to sample with replacement from the ice sheet model ensemble",
     envvar="DP21_REPLACE",
     default=True,
+    show_default=True,
 )
 @click.option(
     "--rngseed",
@@ -112,18 +118,22 @@ import click
     help="Random number generator seed for ice sheet model sampling",
     envvar="DP21_RNGSEED",
     default=1342,
+    show_default=True,
 )
 @click.option(
     "--locationfile",
     type=str,
     help="File that contains name, id, lat, and lon of points for localization",
     envvar="DP21_LOCATIONFILE",
+    required=True,
 )
 @click.option(
     "--chunksize",
     type=int,
     help="Number of locations to process at a time",
     envvar="DP21_CHUNKSIZE",
+    default=50,
+    show_default=True,
 )
 @click.option(
     "--pipeline-id",
@@ -136,7 +146,7 @@ import click
     type=str,
     help="Directory containing ice sheet fingerprints",
     envvar="DP21_FPDIR",
-    default="$HOME/Desktop/facts_work/facts_v2/",
+    required=True,
 )
 @click.option(
     "--output-ais-gslr",

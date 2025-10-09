@@ -55,6 +55,9 @@ docker run --rm -v ./data/input:/mnt/deconto_data_in:ro \
 ```
 
 ## Features
+
+Several options and configurations are available when running the container.
+
 ```shell
 Usage: deconto21-ais [OPTIONS]
 
@@ -117,7 +120,7 @@ docker build -t deconto21-ais .
 If this module runs successfully, a single netCDF containing projections of local sea level change will appear in ./data/output.
 
 ## Support
-Source code is available online at https://github.com/facts-org/deconto21-ais. This software is open source, available under the MIT license.
+Source code is available online at https://github.com/fact-sealevel/deconto21-ais. This software is open source, available under the MIT license.
 
-Please file issues in the issue tracker at https://github.com/facts-org/deconto21-ais/issues.
+Please file issues in the issue tracker at https://github.com/fact-sealevel/deconto21-ais/issues.
 
