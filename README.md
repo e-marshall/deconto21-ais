@@ -32,20 +32,21 @@ docker build -t deconto21-ais .
 Then, run the container, mounting a volume in the container to the location of the repo on your machine, the location of the input data and where the output data will be written. Execute the application and pass the necessary arguments to the CLI tool:
 
 ```shell
-docker run --rm -v ./data/input:/mnt/deconto_data_in:ro \
--v ./data/output:/mnt/deconto_data_out deconto21-ais \
- --scenario 'rcp85' \
- --input-eais-rcp26-file /mnt/deconto_data_in/dp21_eais_rcp26.nc \
- --input-eais-rcp45-file /mnt/deconto_data_in/dp21_eais_rcp45.nc \
- --input-eais-rcp85-file /mnt/deconto_data_in/dp21_eais_rcp85.nc \
- --input-wais-rcp26-file /mnt/deconto_data_in/dp21_wais_rcp26.nc \
- --input-wais-rcp45-file /mnt/deconto_data_in/dp21_wais_rcp45.nc \
- --input-wais-rcp85-file /mnt/deconto_data_in/dp21_wais_rcp85.nc \
- --nsamps 500 --pyear-start 2020 --pyear-end 2150 \
- --pyear-step 10 --baseyear 2000 --replace True \
- --locationfile  /mnt/deconto_data_in/location.lst \
- --rngseed 1342 --chunksize 50 --pipeline-id MY_PIPELINE_ID \
- --fpdir  /mnt/deconto_data_in/FPRINT/ \
+docker run --rm \
+-v ./data/input:/mnt/deconto_data_in:ro \
+-v ./data/output:/mnt/deconto_data_out \
+deconto21-ais \
+--input-eais-rcp26-file /mnt/deconto_data_in/dp21_eais_rcp26.nc \
+--input-eais-rcp45-file /mnt/deconto_data_in/dp21_eais_rcp45.nc \
+--input-eais-rcp85-file /mnt/deconto_data_in/dp21_eais_rcp85.nc \
+--input-wais-rcp26-file /mnt/deconto_data_in/dp21_wais_rcp26.nc \
+--input-wais-rcp45-file /mnt/deconto_data_in/dp21_wais_rcp45.nc \
+--input-wais-rcp85-file /mnt/deconto_data_in/dp21_wais_rcp85.nc \
+--nsamps 500 --pyear-start 2020 --pyear-end 2150 \
+--pyear-step 10 --baseyear 2000 --replace True \
+--locationfile  /mnt/deconto_data_in/location.lst \
+--rngseed 1342 --pipeline-id MY_PIPELINE_ID \
+--fpdir  /mnt/deconto_data_in/FPRINT \
 --output-wais-lslr  /mnt/deconto_data_out/wais_lslr.nc \
 --output-eais-lslr /mnt/deconto_data_out/eais_lslr.nc \
 --output-ais-lslr /mnt/deconto_data_out/ais_lslr.nc \
