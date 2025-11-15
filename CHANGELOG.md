@@ -7,9 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 
 
+## [0.1.1] - 2025-11-14
+
+### Fixed
+- Corrected a minor typo (See [PR 10](https://github.com/fact-sealevel/deconto21-ais/pull/10))
+
 ## [0.1.0] - 2025-11-06
 - Initial release. 
-- Add prototype of containerized application (https://github.com/fact-sealevel/deconto21-ais/pull/3)
+### Added
+- Prototype of containerized application (https://github.com/fact-sealevel/deconto21-ais/pull/3)
 
-[Unreleased]: https://github.com/fact-sealevel/deconto21-ais/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/fact-sealevel/deconto21-ais/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/fact-sealevel/deconto21-ais/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/fact-sealevel/deconto21-ais/releases/tag/v0.1.0
